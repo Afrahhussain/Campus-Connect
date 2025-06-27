@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login / Register</title>
+  <style>
+    body {
+      font-family: Arial;
+      margin: 50px;
+      text-align: center;
+    }
+    form {
+      display: none;
+      margin: 20px auto;
+      width: 300px;
+      padding: 20px;
+      border: 1px solid #ccc;
+    }
+    #loginForm {
+      display: block;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin: 8px 0;
+    }
+    button, input[type=submit] {
+      padding: 10px 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2 id="formTitle">Login</h2>
+
+  <!-- Login Form -->
+  <form id="loginForm" action="login.php" method="POST">
+    <input type="email" name="email" placeholder="Email" required><br>
+    <input type="password" name="password" placeholder="Password" required><br>
+    <input type="submit" value="Login">
+  </form>
+
+  <!-- Register Form -->
+  <form id="registerForm" action="register.php" method="POST">
+    <input type="text" name="name" placeholder="Name" required><br>
+    <input type="email" name="email" placeholder="Email" required><br>
+    <input type="password" name="password" placeholder="Password" required><br>
+    <select name="role" required>
+      <option value="">Select Role</option>
+      <option value="faculty">Faculty</option>
+      <option value="incharge">Incharge</option>
+      <option value="hod">HOD</option>
+      <option value="admin">Admin</option>
+    </select><br>
+    <input type="submit" value="Register">
+  </form>
+
+  <!-- Toggle Buttons -->
+  <div id="toggleBox">
+    <p id="toggleText">Don't have an account?</p>
+    <button onclick="toggleForm()">Register</button>
+  </div>
+
+  <script>
+    const loginForm = document.getElementById('loginForm');
+    const registerForm = document.getElementById('registerForm');
+    const formTitle = document.getElementById('formTitle');
+    const toggleText = document.getElementById('toggleText');
+    const toggleBtn = document.querySelector('#toggleBox button');
+
+    function toggleForm() {
+      if (loginForm.style.display === 'block') {
+        loginForm.style.display = 'none';
+        registerForm.style.display = 'block';
+        formTitle.innerText = 'Register';
+        toggleText.innerText = 'Already have an account?';
+        toggleBtn.innerText = 'Login';
+      } else {
+        registerForm.style.display = 'none';
+        loginForm.style.display = 'block';
+        formTitle.innerText = 'Login';
+        toggleText.innerText = "Don't have an account?";
+        toggleBtn.innerText = 'Register';
+      }
+    }
+  </script>
+
+</body>
+</html>
